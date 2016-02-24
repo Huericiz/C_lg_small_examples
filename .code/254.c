@@ -1,0 +1,47 @@
+#include"graphics.h"
+#include"stdlib.h"
+main()
+{
+  int i,j,gdriver=DETECT,gmode,size;
+  void*buf;
+  initgraph(&gdriver,&gmode,"");
+  setbkcolor(BLUE);
+  cleardevice();
+  setcolor(LIGHTRED);
+  setlinestyle(0,0,1);
+  setfillstyle(1,10);
+  circle(130,200,12);
+  floodfill(130,200,12);
+  ellipse(130,200,90,270,10,30);
+  ellipse(130,200,180,360,30,10);
+  for(i=-18;i<18;i++)
+     ellipse(130,200,5*i,5*i+1,10,30);
+  for(j=0;j<18;j++)
+     ellipse(130,200,5*j,5*j+1,30,10);
+  size=imagesize(99,169,161,231);
+  buf=malloc(size);
+  if(!buf)
+    return -1;
+  getimage(99,169,161,231,buf);
+  for(i=0;i<170;i++)
+  {
+     putimage(100+i,170,buf,COPY_PUT);
+     putimage(500-i,170,buf,COPY_PUT);
+  }
+  for(i=0;i<170;i++)
+  {
+     putimage(270-i,170,buf,COPY_PUT);
+     putimage(330+i,170,buf,COPY_PUT);
+  }
+  for(i=0;i<336;i++)
+      putimage(100+i,170,buf,COPY_PUT);
+    for(i=0;i<336;i++)
+      putimage(436-i,170,buf,COPY_PUT);
+    for(i=0;i<336;i++)
+      putimage(500-i,170,buf,COPY_PUT);
+     for(i=0;i<336;i++)
+      putimage(164+i,170,buf,COPY_PUT);
+  getch();
+  closegraph();
+
+}

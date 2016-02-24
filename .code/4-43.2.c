@@ -1,0 +1,12 @@
+#include<stdio.h>
+#include<errno.h>
+main()
+{
+  FILE*fp;
+  fp=fopen("error.xxx","r");
+  if((fclose(fp))!=0)
+  {
+     printf("\nError:%s",strerror(errno));
+  }
+  getch();
+}
